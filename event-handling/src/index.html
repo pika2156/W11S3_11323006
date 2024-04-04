@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React App</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+  <script type="text/babel">
+    const { useState } = React;
+
+    function App() {
+      const [userData, setUserData] = useState({ nama: '', umur: '' });
+      const [savedUserData, setSavedUserData] = useState(null);
+      const [tasks, setTasks] = useState([]);
+      const [taskName, setTaskName] = useState('');
+
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setUserData((prevUserData) => ({
+          ...prevUserData,
+          [name]: value
+        }));
+      };
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        setSavedUserData(userData);
+      };
+
+      const addTask = () => {
+        if (taskName.trim() !== '') {
+          setTasks([...tasks, taskName]);
+          setTaskName('');
+        }
+      };
+
+      const removeTask = index => {
+        const newTasks = [...tasks];
+        newTasks.splice(index, 1);
+        setTasks(newTasks);
+      };
+
+      return (
+        <div className="App">
+          <div className="header">Implementasi Event Handling</div>
+          <div className="user-container">
+            <h2>Data Pengguna</h2>
+            <form onSubmit={handleSubmit}>
+              <div className="data-item">
+                <label>Nama:</label> 
+                <input
+                  type="text"
+                  name="nama"
+                  value={userData.nama}
+                  onChange={handleChange}
+                  placeholder="Masukkan nama pengguna"
+                />
+              </div>
+              <div className="data-item">
+                <label>Umur:</label> 
+                <input
+                  type="number"
+                  name="umur"
+                  value={userData.umur}
+                  onChange={handleChange}
+                  placeholder="Masukkan umur pengguna"
+                />
+              </div>
+              <button type="submit">Simpan Data Pengguna</button>
+            </form>
+          </div>
+          {savedUserData && (
+            <div className="user-container">
+              <h2>Data Pengguna yang Disimpan</h2>
+              <div className="data-item">
+                <label>Nama:</label> {savedUserData.nama}
+              </div>
+              <div className="data-item">
+                <label>Umur:</label> {savedUserData.umur}
+              </div>
+            </div>
+          )}
+
+          <div className="task-container">
+            <h1>Task List</h1>
+            <div className="input-container">
+              <input
+                type="text"
+                placeholder="Enter a task"
+                value={taskName}
+                onChange={(e) => setTaskName(e.target.value)}
+              />
+              <button onClick={addTask}>Add Task</button>
+            </div>
+            <ul>
+              {tasks.map((task, index) => (
+                <li key={index}>
+                  {task}
+                  <button onClick={() => removeTask(index)}>Remove</button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>

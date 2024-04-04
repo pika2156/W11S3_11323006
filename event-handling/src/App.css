@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5dc; /* beige */
+  color: #333; /* dark gray */
+}
+
+.App {
+  text-align: center;
+}
+
+.header {
+  background-color: #8b4513; /* saddle brown */
+  color: #fff;
+  padding: 20px;
+  font-size: 24px;
+}
+
+.user-container,
+.task-container {
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px solid #8b4513; /* saddle brown */
+  border-radius: 10px;
+  background-color: #faf0e6; /* linen */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.user-container h2,
+.task-container h1 {
+  margin-bottom: 20px;
+  color: #8b4513; /* saddle brown */
+}
+
+.data-item {
+  margin-bottom: 15px;
+}
+
+.data-item label {
+  font-weight: bold;
+  color: #333; /* dark gray */
+}
+
+input[type="text"],
+input[type="number"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+  background-color: #fff;
+  color: #333; /* dark gray */
+}
+
+.input-container {
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #8b4513; /* saddle brown */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #cd853f; /* peru */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f5deb3; /* wheat */
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+li button {
+  background-color: #8b4513; /* saddle brown */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+li button:hover {
+  background-color: #cd853f; /* peru */
+}
